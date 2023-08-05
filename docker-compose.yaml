@@ -7,5 +7,6 @@ services:
     restart: unless-stopped
     hostname: duckdns
     environment:
-      DUCKDNS_ENV_DOMAINS: "barmy"
+      DUCKDNS_ENV_DOMAINS: "my-domain"
       DUCKDNS_ENV_TOKEN: "${DUCKDNS_TOKEN}"
+      DUCKDNS_ENV_FREQUENCY: 5
