@@ -1,5 +1,13 @@
 #! /usr/bin/bash
 
+COL_RED='\033[0;91m'
+COL_YELLOW='\033[0;93m'
+COL_GREEN='\033[0;92m'
+COL_NC='\033[0m'
+LBL_ERROR="${COL_RED}[ERROR]${COL_NC}"
+LBL_WARNING="${COL_YELLOW}[WARNING]${COL_NC}"
+LBL_OK="${COL_GREEN}[OK]${COL_NC}"
+
 logfile="duckdns.log"
 touch $logfile
 
@@ -10,10 +18,10 @@ echo "Token: $DUCKDNS_ENV_TOKEN" >> $logfile
 # DUCKDNS_ENV_FREQUENCY #############
 regExpInt='^[0-9]+$'
 if [[ $DUCKDNS_ENV_FREQUENCY =~ $regExpInt ]] ; then
-	echo "Update frequency (min): $DUCKDNS_ENV_FREQUENCY" >> $logfile
+	echo -e "${LBL_OK} Update frequency (min): $DUCKDNS_ENV_FREQUENCY" >> $logfile
 else
 	DUCKDNS_ENV_FREQUENCY=5
-	echo "Update frequency not provided, using standard: $DUCKDNS_ENV_FREQUENCY min" >> $logfile
+	echo -e "${LBL_WARNING} Update frequency invalid or not provided, using standard: $DUCKDNS_ENV_FREQUENCY min" >> $logfile
 fi
 #########################################
 echo
