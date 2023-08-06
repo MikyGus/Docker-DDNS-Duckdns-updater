@@ -6,7 +6,16 @@ touch $logfile
 echo "Starting Duckdns-updater" >> $logfile
 echo "Domains: $DUCKDNS_ENV_DOMAINS" >> $logfile
 echo "Token: $DUCKDNS_ENV_TOKEN" >> $logfile
-echo "Update frequency (min): $DUCKDNS_ENV_FREQUENCY" >> $logfile
+
+# DUCKDNS_ENV_FREQUENCY #############
+regExpInt='^[0-9]+$'
+if [[ $DUCKDNS_ENV_FREQUENCY =~ $regExpInt ]] ; then
+	echo "Update frequency (min): $DUCKDNS_ENV_FREQUENCY" >> $logfile
+else
+	DUCKDNS_ENV_FREQUENCY=5
+	echo "Update frequency not provided, using standard: $DUCKDNS_ENV_FREQUENCY min" >> $logfile
+fi
+#########################################
 echo
 echo "Updater uses this URL:" >> $logfile
 echo "https://www.duckdns.org/update?domains='${DUCKDNS_ENV_DOMAINS}'&token='${DUCKDNS_ENV_TOKEN}'&ip=" >> $logfile
