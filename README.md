@@ -23,6 +23,8 @@ services:
     environment:
       DUCKDNS_ENV_DOMAINS: "my-awesome-subdomain"
       DUCKDNS_ENV_TOKEN: "${DUCKDNS_TOKEN}"
+      DUCKDNS_ENV_FREQUENCY: 5
+
 ```
 ### .env
 ```bash
@@ -34,3 +36,4 @@ DUCKDNS_TOKEN="enter-your-duckdns-token-here"
 | -------- | ------- |  ------- | 
 | DUCKDNS_ENV_DOMAINS | YES |  |
 | DUCKDNS_ENV_TOKEN | YES |  |
+| DUCKDNS_ENV_FREQUENCY | NO | 5 |
