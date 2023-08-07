@@ -13,8 +13,6 @@ logfile="duckdns.log"
 fatalerrorCounter=0
 warningCounter=0
 
-touch $logfile
-
 echo "Starting Duckdns-updater" >> $logfile
 
 #########################################
@@ -61,8 +59,6 @@ fi
 
 #########################################
 
-
-echo
 echo "Updater uses this URL:" >> $logfile
 echo "https://www.duckdns.org/update?domains='${DUCKDNS_ENV_DOMAINS}'&token='${DUCKDNS_ENV_TOKEN}'&ip=" >> $logfile
 
@@ -77,7 +73,7 @@ echo "export DUCKDNS_ENV_TOKEN=$DUCKDNS_ENV_TOKEN" >> /etc/environment
 
 # Register when to do the cronjob
 echo "Registering cronjob" >> $logfile
-crontab -l | { cat; echo "*/$DUCKDNS_ENV_FREQUENCY * * * * /opt/duckdns/duck.sh > /dev/null 2>&1"; } | crontab -
+echo "*/$DUCKDNS_ENV_FREQUENCY * * * * /opt/duckdns/duck.sh > /dev/null 2>&1" | crontab -
 crontab -l  >> $logfile
 
 # Starting the crontab

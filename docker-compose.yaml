@@ -3,10 +3,10 @@ version: '3'
 services:
   duckdns:
     container_name: Duckdns
-    image: mikygus/duckdns-updater:1.0
+    image: mikygus/duckdns-updater:latest
     restart: unless-stopped
     hostname: duckdns
     environment:
       DUCKDNS_ENV_DOMAINS: "${DUCKDNS_DOMAINS}"
       DUCKDNS_ENV_TOKEN: "${DUCKDNS_TOKEN}"
-      DUCKDNS_ENV_FREQUENCY: 5
+      DUCKDNS_ENV_FREQUENCY: 1
